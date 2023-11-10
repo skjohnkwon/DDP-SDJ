@@ -1,0 +1,50 @@
+.home {
+    font-family: 'Gabarito', sans-serif;
+    background-color: var(--main-bg-color);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home label {
+    color: var(--text-color);
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+
+
+.home .search-field::placeholder {
+    text-align: center;
+}
+
+#pagination-first-page {
+
+    background: none;
+    border: none; 
+    box-shadow: none; 
+}
+
+#pagination-previous-page {
+
+    background: none;
+    border: none; 
+    box-shadow: none; 
+}
+
+#pagination-next-page {
+
+    background: none;
+    border: none; 
+    box-shadow: none; 
+}
+
+#pagination-last-page {
+
+    background: none;
+    border: none; 
+    box-shadow: none; 
+}
+

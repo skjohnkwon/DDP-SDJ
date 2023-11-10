@@ -1,0 +1,71 @@
+
+.search .input-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid white; */
+}
+
+.search .right-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.search input {
+    padding: 10px 15px;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s;
+    border-style: none;
+}
+
+.search {
+    width: 900px;
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+}
+
+.search .result-window {
+    width: 80vh;
+    height: 70vh;
+    background-color: var(--secondary-bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* border: 1px solid white; */
+    overflow: auto;
+
+}
+
+.search .result-window table {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;  /* Adjust as needed */
+    border-collapse: separate;  /* This helps in border spacing */
+    border-spacing: 0;         /* Remove the space */
+    color: var(--text-color);
+}
+
+.rtd_Table {
+    background-color: var(--secondary-bg-color);
+}
+
+.rdt_TableRow.rdt_TableRow--highlight {
+    background-color: yourHighlightColorHere !important; /* Replace `yourHighlightColorHere` with your desired color */
+}
+
+.button-div {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid white; */
+}
+

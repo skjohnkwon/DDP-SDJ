@@ -1,0 +1,152 @@
+@import url('https://fonts.cdnfonts.com/css/gabarito');
+
+:root {
+  --main-bg-color: rgb(0, 40, 60);  
+  --secondary-bg-color: rgb(0, 60, 90);  
+  --third-bg-color: rgb(0, 90, 135);  
+  --fourth-bg-color: rgb(0, 111, 166);  
+  --text-color: rgb(200, 220, 255);  
+  --accent-color: rgb(0, 68, 102);  
+  --border-color: rgb(0, 100, 150);  
+}
+
+body {
+  font-family: 'Gabarito', sans-serif;
+  background-color: var(--main-bg-color);
+  margin: 0;
+}
+
+input {
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);  
+  border: none;
+  border-bottom: 1px solid white;  
+  outline: none;  
+  margin: 10px;
+  
+  font-family: 'Poppins', sans-serif;
+}
+
+h3 {
+
+  color: var(--text-color);
+  margin: 10px;
+
+}
+
+label {
+  color: var(--text-color);
+  margin: 10px;
+}
+
+.error {
+
+  color: red;
+  margin: 10px;
+}
+
+
+button {
+  font-family: 'Poppins', sans-serif;
+  height: 35px;
+  width: 150px;
+  margin: 20px;
+  border: none;
+  background: var(--accent-color);
+  color: var(--text-color);
+}
+
+button:hover {
+  background-color: var(--third-bg-color);
+}
+
+button:disabled,
+button:disabled:hover {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background: var(--accent-color);
+}
+
+h1 {
+
+  color: var(--text-color);
+  margin: 10px;
+  text-align: center;
+
+}
+
+h2 {
+
+  color: var(--text-color);
+  margin: 10px;
+  
+}
+
+.input-label {
+
+  display: block;
+  margin: 10px;
+  border: none;
+  width: 100px;
+}
+
+.input-field{
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-color: var(--text-color);
+}
+
+
+.input-div {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* align-content: space-around; */
+}
+
+.loading-spinner {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 8px solid black;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.button-div {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* align-content: space-around; */
+}
+

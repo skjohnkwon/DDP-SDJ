@@ -1,0 +1,72 @@
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px; 
+    table-layout: fixed;
+}
+
+thead {
+    background-color: #84d8ff;
+    position: relative; /* Added this to position thead */
+}
+
+th {
+    border: 1px solid #dddddd;
+    color: black;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #84d8ff; /* Specified a background color */
+    padding: 5px 10px;  /* Adjust as needed */
+    height: 40px;
+    overflow: hidden;
+}
+
+
+tbody {
+    height: 100%;    
+    overflow-y: auto;    
+    display: block; 
+    -ms-overflow-style: none;
+}
+
+tbody::-webkit-scrollbar {
+    display: none;
+}
+
+tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    max-height: 80px;
+    overflow: hidden;
+}
+
+td {
+    border: 1px solid #4675a0;
+    vertical-align: top;   
+    padding: 5px 10px;  /* Adjust as needed */
+    height: 80px;
+    overflow: hidden;
+}
+
+#description_cell {
+      
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+
+.selected {
+    background-color: #5c86b3;
+    color: rgb(255, 255, 255);
+}
+
+tr:hover {
+    background-color: #2f445a;
+    color: rgb(255, 255, 255);
+}
+
+.table-container {
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}

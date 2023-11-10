@@ -1,0 +1,50 @@
+.comment_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+}
+
+.comment_div textarea {
+    resize: vertical;
+
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);  
+    border: none;
+    border-bottom: 1px solid white;  
+    outline: none;  
+    margin: 10px;
+
+    height: 400px;
+}
+
+.comment_div h2 {
+    color: var(--text-color);
+    margin: 10px;
+    text-align: center;
+}
+
+.rating_list {
+
+    width: 100px;
+    padding: 10px;
+    font-size: 13px;
+    appearance: none; /* Removes the default styling for some browsers */
+    -webkit-appearance: none; /* Removes the default styling for Webkit browsers */
+    -moz-appearance: none; /* Removes the default styling for Firefox */
+    background-color: var(--secondary-bg-color);
+    color: white;
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, black 50%), linear-gradient(-45deg, transparent 50%, black 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; 
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    border: none;
+  
+}
+
+.rating_list option {
+    padding: 5px 10px;
+    color: var(--text-color);
+}
