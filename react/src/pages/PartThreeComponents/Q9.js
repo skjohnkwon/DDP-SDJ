@@ -16,7 +16,7 @@ const Q9 = () => {
         console.log('Answers retrieved!', response.data['answer']);
       }
       
-      setAnswers(response.data['answer']); // Update the state with the answers
+      setAnswers(response.data['answer']);
 
     } catch (error) {
       console.error('Error: ', error);

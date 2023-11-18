@@ -39,7 +39,7 @@ const CreateNewListing = () => {
                 user: userdata.id,
             }, {
                 headers: {
-                    Authorization: `Bearer ${token}`,  // Replace 'token' with your actual token variable
+                    Authorization: `Bearer ${token}`,
                 }
             });
             
@@ -50,7 +50,6 @@ const CreateNewListing = () => {
                     setMessage('');
                 }, 3000);
 
-                // Reset the fields
                 setTitle('');
                 setDescription('');
                 setPrice('');

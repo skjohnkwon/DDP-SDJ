@@ -7,7 +7,6 @@ const CreateComment = ({ username, item, item_id }) => {
   const [rating, setRating] = useState('fair');
   const [message, setMessage] = useState('');
 
-  // Observe changes to the 'rating' state
   useEffect(() => {
     console.log("Updated rating:", rating);
   }, [rating]);
@@ -59,7 +58,7 @@ const CreateComment = ({ username, item, item_id }) => {
       <select 
         name="rating" 
         className="rating_list" 
-        value={rating}  // Bind the rating state to the select value
+        value={rating}
         onChange={e => {
           console.log("Setting rating to:", e.target.value);
           setRating(e.target.value);

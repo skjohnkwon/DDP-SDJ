@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useFetchUserData = (url) => {  // Added url parameter
+const useFetchUserData = (url) => {  
 
   const [userData, setUserData] = useState({
     username: '',
@@ -10,10 +10,10 @@ const useFetchUserData = (url) => {  // Added url parameter
     last_name: '',
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);  // To store potential error data
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
-    setIsLoading(true);  // Set loading to true at the start
+    setIsLoading(true); 
     try {
       const token = localStorage.getItem('access_token');
 
@@ -42,8 +42,8 @@ const useFetchUserData = (url) => {  // Added url parameter
       setIsLoading(false);
       console.error("There was an error fetching user details:", err);
     };
-  }, [url]);  // Dependency on the url, so it'll refetch if url changes
+  }, [url]);
 
-  return [userData, error];  // Changed to return in array format
+  return [userData, error];
 };
 export default useFetchUserData;

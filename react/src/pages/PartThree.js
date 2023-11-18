@@ -15,7 +15,7 @@ import axios from 'axios';
 
 const PartThree = () => {
     const [currentComponentKey, setCurrentComponentKey] = useState(null);
-    const [selectedButton, setSelectedButton] = useState(null); // State to track the selected button
+    const [selectedButton, setSelectedButton] = useState(null);
 
     const componentMap = {
         q1: <Q1 />,

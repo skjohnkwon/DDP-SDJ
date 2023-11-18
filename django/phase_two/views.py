@@ -121,9 +121,6 @@ def create_comment(request):
 
             valid_data = serializer.validated_data
             
-            # print(valid_data)
-            # print("commentor", request.user.id) #perosn who is commenting
-            # print("comentee", Item.objects.get(id = valid_data['item'].id).user_id) #the comment receiver
             if(request.user.id == Item.objects.get(id = valid_data['item'].id).user_id):
                 print("same user")
                 return Response({"message": "You can't comment on your own item"}, status=status.HTTP_406_NOT_ACCEPTABLE)
@@ -226,12 +223,9 @@ def create_favorites_task(user_a, user_b, common_users):
 
     random_date = get_random_date(datetime(2023, 5, 1, tzinfo=timezone.utc), datetime(2023, 5, 8, tzinfo=timezone.utc))
 
-    # Assuming Favorite is a model that records user favorites
-    # Create favorite records in the database
     for common_user in common_users:
         Favorite.objects.create(user=user_a, fav_user=common_user, created_at=random_date)
         Favorite.objects.create(user=user_b, fav_user=common_user, created_at=random_date)
-    # Return some indication of completion, if needed
 
 def create_items_for_user(user):
     categories = ['Electronics', 'Books', 'Clothing', 'Toys', 'Home & Garden']
@@ -250,12 +244,11 @@ def create_items_for_user(user):
 def create_excellent_comments(pair):
 
     user1, user2 = pair
-    # Code for creating comments for user1's items
+
     for item in Item.objects.filter(user=user1):
         create_comment(user2, item, 'excellent', 'Excellent product!', get_random_date(item.created_at, datetime(2023, 5, 8, tzinfo=timezone.utc)))
         #print(f"Excellent comment from {style.CYAN}{user2.username}{style.RESET} to {style.CYAN}{user1.username}{style.RESET}'s item: {item.title}")
 
-    # Code for creating comments for user2's items
     for item in Item.objects.filter(user=user2):
         create_comment(user1, item, 'excellent', 'Outstanding quality!', get_random_date(item.created_at, datetime(2023, 5, 8, tzinfo=timezone.utc)))
         #print(f"Excellent comment from {style.CYAN}{user1.username}{style.RESET} to {style.CYAN}{user2.username}{style.RESET}'s item: {item.title}")
@@ -291,13 +284,13 @@ def create_item_and_comments(user, users_list):
         #print(f"Excellent comment added by {style.CYAN}{commenting_user.username}{style.RESET} to {style.BRIGHT_CYAN}{user.username}{style.RESET}'s item: {item.title} ({item.id})")
 
 def delete_and_add_poor_comments(user):
-    # Delete all comments made by the user
+
     Comment.objects.filter(user=user).delete()
     #print(f"All comments deleted for {style.CYAN}{user.username}{style.RESET}")
 
     # Add three 'poor' comments to random items
     for _ in range(3):
-        random_item = choice(Item.objects.all())  # Select a random item
+        random_item = choice(Item.objects.all())
         create_comment(
             user, 
             random_item, 
@@ -313,7 +306,6 @@ def gen_fake_data():
 
     usernames = [f"user{n:04d}" for n in range(21)]
     users = User.objects.filter(username__in=usernames)
-    categories = ['Electronics', 'Books', 'Clothing', 'Toys', 'Home & Garden']
 
     if users.count() < len(usernames):
         print(style.RED + "Not all users exist in the database. Please ensure the users are created before running this function." + style.RESET)
@@ -330,9 +322,8 @@ def gen_fake_data():
     # Select 10 random users
     selected_users = sample(users_list, 10)
 
-    # Create items and add comments using multithreading
     with ThreadPoolExecutor(max_workers=10) as executor:
-        tasks = [(user, users_list) for user in selected_users]  # Prepare tuples of arguments
+        tasks = [(user, users_list) for user in selected_users]
         list(tqdm(executor.map(lambda args: create_item_and_comments(*args), tasks), total=len(selected_users), desc=style.BRIGHT_RED + "Creating items and adding poor comments" + style.RESET, ncols=100))
 
     users_list = list(users)
@@ -375,7 +366,6 @@ def gen_fake_data():
             if len(user_pairs) >= max_pairs:
                 break
 
-    # Create excellent comments using multithreading
     with ThreadPoolExecutor(max_workers=10) as executor:
         list(tqdm(executor.map(create_excellent_comments, user_pairs), total=len(user_pairs), desc=style.BRIGHT_BLUE + "Creating excellent comments" + style.RESET, ncols=100))
 
@@ -385,7 +375,6 @@ def gen_fake_data():
     available_users = [user for user in users_list if user not in used_users]
     selected_users = sample(available_users, 5)
 
-    # Delete comments and add new comments using multithreading
     with ThreadPoolExecutor(max_workers=5) as executor:
         list(tqdm(executor.map(delete_and_add_poor_comments, selected_users), total=len(selected_users), desc=style.BRIGHT_YELLOW + "Deleting and adding comments" + style.RESET, ncols=100))
 

@@ -138,7 +138,7 @@ const Register = () => {
       setEmailValid(false);
       return false;
     }
-    setEmailValid(true);  // Reset to true when valid
+    setEmailValid(true);
     return true;
   }
 
@@ -148,7 +148,7 @@ const Register = () => {
         setConfirmPasswordValid(false);
         return false;
       }
-      setConfirmPasswordValid(true);  // Reset to true when valid
+      setConfirmPasswordValid(true);
       return true;
     };
   
@@ -223,7 +223,7 @@ const Register = () => {
               className='input-field'
               type = "password"
               placeholder="Password"
-              autoComplete="new-password" // added this
+              autoComplete="new-password"
               onChange={e => {setPassword(e.target.value);}}
           />
 
@@ -237,7 +237,7 @@ const Register = () => {
               className='input-field'
               type = "password"
               placeholder="Confirm Password"
-              autoComplete="new-password" // added this
+              autoComplete="new-password"
               onChange={e => {setConfirmPassword(e.target.value);}}
           />
 

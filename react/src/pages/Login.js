@@ -13,7 +13,7 @@ const Login = () => {
   
     const login = async (event) => {
 
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
         try {
             axios.post('http://127.0.0.1:8000/login/', {
@@ -52,7 +52,7 @@ const Login = () => {
                       type="text"
                       placeholder="Username"
                       onChange={e => setUsername(e.target.value)}
-                      autoComplete="username" // Added autocomplete for username
+                      autoComplete="username"
                   />
               </div>
               <div className='input-div'>
@@ -62,7 +62,7 @@ const Login = () => {
                       type="password"
                       placeholder="Password"
                       onChange={e => setPassword(e.target.value)}
-                      autoComplete="current-password" // Added autocomplete for password
+                      autoComplete="current-password"
                   />
               </div>
           </form>

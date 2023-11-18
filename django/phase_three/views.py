@@ -64,7 +64,7 @@ def add_favorite(request):
 
             # Check for duplicate favorites
             user = request.user
-            fav_user_id = valid_data.get('fav_user').id  # Assuming 'fav_user' is in validated data and is a User instance
+            fav_user_id = valid_data.get('fav_user').id
 
             # Query to check if this favorite already exists
             if Favorite.objects.filter(user=user, fav_user_id=fav_user_id).exists():
@@ -102,7 +102,6 @@ def q10(request):
         """)
         user_pairs = cursor.fetchall()
 
-    # Printing out the results with color styling
     for pair in user_pairs:
         print(style.BRIGHT_GREEN + f"User1: {pair[0]}" + style.RESET)
         print(style.BRIGHT_CYAN + f"User2: {pair[1]}" + style.RESET + "\n")
@@ -170,23 +169,6 @@ def q8(request):
         users_all_poor_reviews = cursor.fetchall()
 
     answer_array = [user[0] for user in users_all_poor_reviews]
-
-    # # Print users who have only posted 'poor' reviews
-    # for username in answer_array:
-    #     print(style.CYAN + f"\nUser with only 'Poor' Reviews: {username}" + style.RESET)
-    #     with connection.cursor() as cursor:
-    #         cursor.execute("""
-    #             SELECT i.id, i.title, c.comment
-    #             FROM phase_two_item i
-    #             LEFT JOIN phase_two_comment c ON i.id = c.item_id
-    #             WHERE i.user_id = (SELECT id FROM userauth_user WHERE username = %s) AND c.comment IS NOT NULL AND c.comment != ''
-    #         """, [username])
-    #         items = cursor.fetchall()
-
-    #         for item_id, item_title, comment in items:
-    #             comment_str = comment if comment else 'None'
-    #             print(style.GREEN + f"  Item: {item_title} (ID: {item_id})" + style.RESET, 
-    #                   style.YELLOW + f", Comment: {comment_str}" + style.RESET)
 
     # Print all users from answer_array and their comments
     for username in answer_array:
@@ -363,7 +345,7 @@ def q5(request):
 
         # For each user in mutual_favorite_usernames, print all of their favorites
         for username in mutual_favorite_usernames:
-            # SQL query to get all favorites of the user
+            
             cursor.execute("""
                 SELECT fav_user.username
                 FROM phase_three_favorite
@@ -374,7 +356,6 @@ def q5(request):
             """, [username])
             favorites = [fav_row[0] for fav_row in cursor.fetchall()]
 
-            # Styled print for each user and their favorites
             print(f"{style.BRIGHT_CYAN}User: {username}{style.RESET}")
             print(f"  {style.YELLOW}Favorite: {favorites}{style.RESET}")
 
@@ -528,6 +509,7 @@ def q1(request):
     print(style.RED + "\nQ1" + style.RESET)
 
     with connection.cursor() as cursor:
+        
         # SQL query to find the most expensive item in each category
         cursor.execute("""
             SELECT unnested_category, MAX(price) AS max_price

@@ -11,6 +11,6 @@ class CustomUserAdmin(UserAdmin):
 try:
     admin.site.unregister(User)
 except NotRegistered:
-    pass  # If User is not registered, do nothing
+    pass 
 
 admin.site.register(User, CustomUserAdmin)

@@ -9,10 +9,9 @@ const RegistrationComplete = () => {
     
     const registrationStatus = localStorage.getItem('reg_token');
 
-    // Check if user has a token and has completed registration
     if (registrationStatus === null) {
 
-      navigate('/');  // Redirect to login page
+      navigate('/');
 
     }
     
@@ -20,9 +19,9 @@ const RegistrationComplete = () => {
 
   const back = () => {
 
-    localStorage.removeItem('reg_token');  // Remove token
+    localStorage.removeItem('reg_token');
     
-    navigate('/');  // Redirect to login page
+    navigate('/');
 
   };
 

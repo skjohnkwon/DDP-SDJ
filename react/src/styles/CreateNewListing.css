@@ -1,9 +1,9 @@
 .container {
     display: flex;
-    align-items: center;      /* This vertically centers the content */
-    justify-content: center;  /* This horizontally centers the content */
-    flex-direction: column;   /* This stacks the children vertically */
-    height: 100%;            /* This takes the full height of the viewport */
+    align-items: center;    
+    justify-content: center; 
+    flex-direction: column;
+    height: 100%;
 }
 
 .item-form {
