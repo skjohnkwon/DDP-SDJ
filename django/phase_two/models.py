@@ -17,7 +17,6 @@ class Item(models.Model):
         self.categories = [cat.strip().upper() for cat in self.categories]
         super(Item, self).save(*args, **kwargs)
 
-    
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments', default='')
     item = models.ForeignKey(Item, on_delete=models.CASCADE)

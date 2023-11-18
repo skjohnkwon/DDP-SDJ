@@ -45,4 +45,9 @@
 
 .nav .signout {
   background-color: rgb(116, 38, 38);
+  color: white;
+}
+
+.nav .signout:hover {
+  background-color: rgb(255, 0, 0);
 }

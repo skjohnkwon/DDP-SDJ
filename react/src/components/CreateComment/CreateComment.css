@@ -34,7 +34,7 @@
     -webkit-appearance: none; /* Removes the default styling for Webkit browsers */
     -moz-appearance: none; /* Removes the default styling for Firefox */
     background-color: var(--secondary-bg-color);
-    color: white;
+    color: var(--text-color);
     cursor: pointer;
     background-image: linear-gradient(45deg, transparent 50%, black 50%), linear-gradient(-45deg, transparent 50%, black 50%);
     background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; 

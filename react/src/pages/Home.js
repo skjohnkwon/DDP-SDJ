@@ -1,7 +1,7 @@
 
 import React from 'react';
-import Navbar from "../components/Navbar/Navbar";
 import Search from "../components/Search/Search";
+import Navbar from '../components/Navbar/Navbar';
 
 import '../styles/Home.css';
 

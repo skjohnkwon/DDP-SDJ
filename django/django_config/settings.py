@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'userauth',
     'corsheaders',
     'phase_two',
+    'phase_three',
 ]
 
 MIDDLEWARE = [

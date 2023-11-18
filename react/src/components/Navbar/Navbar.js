@@ -59,13 +59,18 @@ const Navbar = () => {
     navigate('/create-new');
   }
 
+  const part3 = () => {
+    navigate('/part3');
+  }
+
   return (
-    <nav class="nav">
-        <a href = "/home" className="nav-element">DSJ-DDP p2</a>
+    <nav className="nav">
+        <a href = "/home" className="nav-element">DSJ-DDP</a>
         <h2>Signed in as {username}</h2>
         <ul>
           
           <CheckAuthButton/>
+          <button onClick={part3}>Part 3</button>
           <button onClick={create_listing} className="create-listing">Create New Item</button>
           <button onClick={sign_out} className='signout'>Sign Out</button>
         </ul>

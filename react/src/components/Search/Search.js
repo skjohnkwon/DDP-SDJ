@@ -3,6 +3,7 @@ import './Search.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CreateComment from '../CreateComment/CreateComment';
+import AddFavorite from '../AddFavorite/AddFavorite';
 import Table from '../Tables/Tables';
 
 const Search = () => {
@@ -59,8 +60,12 @@ const Search = () => {
 
     return (
         <div className='search'>
-    
+
             <div className='left-div'>
+                <AddFavorite />
+            </div>
+    
+            <div className='middle-div'>
     
                 <div className="input-div">
     

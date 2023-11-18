@@ -16,7 +16,7 @@ th {
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: #84d8ff; /* Specified a background color */
+    background-color: var(--fourth-bg-color); /* Specified a background color */
     padding: 5px 10px;  /* Adjust as needed */
     height: 40px;
     overflow: hidden;
@@ -43,7 +43,7 @@ tr {
 }
 
 td {
-    border: 1px solid #4675a0;
+    border: 1px solid var(--fourth-bg-color);
     vertical-align: top;   
     padding: 5px 10px;  /* Adjust as needed */
     height: 80px;
@@ -57,13 +57,12 @@ td {
 }
 
 .selected {
-    background-color: #5c86b3;
+    background-color: var(--selected-color);
     color: rgb(255, 255, 255);
 }
 
 tr:hover {
-    background-color: #2f445a;
-    color: rgb(255, 255, 255);
+    background-color: rgb(226, 202, 178);
 }
 
 .table-container {

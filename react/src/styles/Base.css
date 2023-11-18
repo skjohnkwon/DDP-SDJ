@@ -1,14 +1,16 @@
 @import url('https://fonts.cdnfonts.com/css/gabarito');
 
 :root {
-  --main-bg-color: rgb(0, 40, 60);  
-  --secondary-bg-color: rgb(0, 60, 90);  
-  --third-bg-color: rgb(0, 90, 135);  
-  --fourth-bg-color: rgb(0, 111, 166);  
-  --text-color: rgb(200, 220, 255);  
-  --accent-color: rgb(0, 68, 102);  
-  --border-color: rgb(0, 100, 150);  
+  --main-bg-color: rgb(255, 204, 153); /* brighter pastel orange */
+  --secondary-bg-color: rgb(255, 217, 179); /* more vibrant light pastel orange */
+  --third-bg-color: rgb(255, 229, 204); /* slightly brighter very light pastel orange */
+  --fourth-bg-color: rgb(255, 191, 128); /* more vibrant deeper pastel orange */
+  --text-color: rgb(80, 50, 40); /* darker brown for contrast and readability */
+  --accent-color: rgb(255, 183, 107); /* more vivid pastel orange for accents */
+  --border-color: rgb(255, 166, 77); /* brighter pastel orange for borders */
+  --selected-color: rgb(252, 162, 72); /* more vivid pastel orange for selected items */
 }
+
 
 body {
   font-family: 'Gabarito', sans-serif;
@@ -57,7 +59,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--third-bg-color);
+  background-color: rgb(224, 163, 97);
 }
 
 button:disabled,

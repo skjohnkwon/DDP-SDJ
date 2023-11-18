@@ -1,0 +1,74 @@
+.question-interface-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--fourth-bg-color);
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.category-input-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.category-input-div .input-field{
+    height: 27px;
+}
+
+.answer-div {
+    display: flex;
+    color: var(--text-color);
+    flex-direction: column;
+    border: 2px solid var(--border-color);
+    padding: 10px;
+    min-width: 130px;
+    max-width: 200px;
+    min-height: 120px;
+    max-height: max-content;
+    box-sizing: border-box;
+    margin: 5px;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.main-body {        
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 100%;
+    overflow-y: auto;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-body::-webkit-scrollbar {
+    display: none;
+}
+
+.main-body {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}
+
+.answer-button {
+    height: 50px;
+}
+
+.question-interface-div  .dropdown-div {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.question-interface-div .user-list {
+    margin: 10px;
+}

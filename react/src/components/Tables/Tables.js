@@ -8,10 +8,14 @@ function Table({ data, onRowSelect }) {
     const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
   
     const handleRowClick = (index, rowData) => {
-      setSelectedRow(index);
-      // console.log('Row clicked:', rowData);
-      if (onRowSelect) onRowSelect(rowData);
-    };
+      if (index === selectedRow) {
+          setSelectedRow(null);
+          if (onRowSelect) onRowSelect(null); 
+      } else {
+          setSelectedRow(index);
+          if (onRowSelect) onRowSelect(rowData);
+      }
+  };
 
     const handleSort = (field) => {
       if (sortField === field) {

@@ -27,15 +27,24 @@ const CheckAuthButton = () => {
         console.log("email: ", response.data.email)
         setResult(`response.data: ${response.data.message}`);
         setButtonColor('green');
+        setTimeout(() => {
+          setButtonColor('');
+        }, 3000);
       } else {
         setResult('Something went wrong');
         setButtonColor('red');
+        setTimeout(() => {
+          setButtonColor('');
+        }, 3000);
       }
 
     } catch (error) {
       console.log("Authentication failed", error);
       setResult('Authentication failed');
       setButtonColor('red');
+      setTimeout(() => {
+        setButtonColor('');
+      }, 3000);
     }
   };
 

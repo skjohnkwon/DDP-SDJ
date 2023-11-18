@@ -1,0 +1,39 @@
+.partthree-div-body .button-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    background-color: var(--fourth-bg-color);
+    width: 700px;
+}
+
+.partthree-div-body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    width: 700px;
+    height: 65vh;
+    background-color: rgb(255,191,128);
+}
+
+.selected-button {
+    background-color: var(--selected-color);
+    color: var(--text-color);
+}
+
+.selected-button:hover {
+    background-color: rgb(224, 124, 23);
+    color: var(--text-color);
+}

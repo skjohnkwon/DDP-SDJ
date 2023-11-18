@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('userauth.urls')),  # Include URLs of userauth app
     path('', include('phase_two.urls')),  # Include URLs of phase_two app
+    path('', include('phase_three.urls')),  # Include URLs of phase_three app
 ]

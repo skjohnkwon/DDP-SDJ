@@ -11,8 +11,6 @@
     align-self: center;
     justify-content: center;
     flex-direction: column;
-
-    border: 1px solid white;
     border-radius: 15px;
 }
 

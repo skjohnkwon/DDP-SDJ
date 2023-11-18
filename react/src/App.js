@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import RegistrationComplete from './pages/RegistrationComplete';
 import Register from './pages/Register';
 import CreateNewListing from './pages/CreateNewListing';
-
+import PartThree from './pages/PartThree';
 
 const ProtectedRoute = ({ children }) => {
 
@@ -32,6 +32,7 @@ const RoutesWrapper = ({ setToken }) => {
       <Route path="/register" element={<Register />} />
       <Route path="/registration-complete" element={<RegistrationComplete />} />
       <Route path="/create-new" element={<CreateNewListing/>}></Route>
+      <Route path="/part3" element={<PartThree></PartThree>}></Route>
     </Routes>
   );
   
@@ -43,6 +44,7 @@ const App = () => {
   const [_, setToken] = useState(null);
 
   return (
+    
     <BrowserRouter>
       <RoutesWrapper setToken={setToken} />
     </BrowserRouter>

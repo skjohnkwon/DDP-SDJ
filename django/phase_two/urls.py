@@ -6,5 +6,5 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('create-comment/', views.create_comment, name='create-comment'),
     path('create-item-test/', views.create_item_test, name='create-item-test'),
-    path('init-db/', views.init_db, name='init-db'),
+    path('init-db/', views.init_db, name='init-db')
 ]
