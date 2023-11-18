@@ -161,10 +161,11 @@ const Register = () => {
   
 
   return (
+
     <div className="shared">
+
       {errorMessage && <label className='error'>{errorMessage}</label>}
       
-
         <div className='input-div'>
           <label className='input-label'>Username</label>
           <input className={`input-field ${usernameValid ? '' : 'red-input'}`}
