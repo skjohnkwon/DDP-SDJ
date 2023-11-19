@@ -8,15 +8,12 @@ from rest_framework.response import Response
 from .models import Item, Comment
 from phase_three.models import Favorite
 from .serializers import ItemSerializer, CommentSerializer
-from random import uniform
 from userauth.models import User
 import random
 from random import choice, randint, sample
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 from itertools import combinations
-from threading import Lock
-
 
 class style():
 
@@ -46,32 +43,31 @@ def get_random_date(start_date, end_date):
 
 def count_items_today(user):
     print(f"User ID: {user.id}")
-
     now = timezone.now()
-    start_of_day = datetime(now.year, now.month, now.day)
+    start_of_day = timezone.make_aware(timezone.datetime(now.year, now.month, now.day))
     end_of_day = start_of_day + timedelta(days=1)
     return Item.objects.filter(user_id=user.id, created_at__range=(start_of_day, end_of_day)).count()
 
 def count_comments_today(user):
     print(f"User ID: {user.id}")
-
     now = timezone.now()
-    start_of_day = datetime(now.year, now.month, now.day)
+    start_of_day = timezone.make_aware(timezone.datetime(now.year, now.month, now.day))
     end_of_day = start_of_day + timedelta(days=1)
     return Comment.objects.filter(user_id=user.id, created_at__range=(start_of_day, end_of_day)).count()
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_item(request):
-    print(request.data)
+    print("create item")
+    print("request:",request.data)
     # print(request.user)
     user = request.user
     if not user.is_authenticated:
         return Response({"message": "You are not authorized to create an item"}, status=status.HTTP_401_UNAUTHORIZED)
     
-    item_count_today = count_items_today(user)
+    item_count_today = count_items_today(user) + 1
     print("item count today ", item_count_today, user.username)
-    if item_count_today >= 3:
+    if item_count_today > 3:
         return Response({"message": "You can only create up to 3 items per day."}, status=status.HTTP_406_NOT_ACCEPTABLE)
     
     if request.method == 'POST':
@@ -109,9 +105,9 @@ def create_comment(request):
     if not request.user.is_authenticated:
         return Response({"message": "You are not authorized to create a comment"}, status=status.HTTP_401_UNAUTHORIZED)
     
-    comment_count_today = count_comments_today(request.user)
+    comment_count_today = count_comments_today(request.user) + 1
     print("comment count today ", comment_count_today, request.user.username)
-    if comment_count_today >= 3:
+    if comment_count_today > 3:
         return Response({"message": "You can only create up to 3 comments per day."}, status=status.HTTP_409_CONFLICT)
     
     if request.method == 'POST':
@@ -142,7 +138,7 @@ def create_item_test(request):
             return Response({"message": "Item created successfully"}, status=status.HTTP_201_CREATED)
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
 def drop_tables():
     print("\n\033[1m" + style.BRIGHT_RED + "DROPPING TABLES..." + style.RESET + "\033[0m")
     try:
@@ -198,7 +194,7 @@ def get_random_date(start, end):
     random_seconds = random.randint(0, int(time_between_dates.total_seconds()))
     return start + timezone.timedelta(seconds=random_seconds)
 
-def create_item(user, title, description, price, categories, date):
+def create_fake_item(user, title, description, price, categories, date):
 
     return Item.objects.create(
         user=user, 
@@ -209,7 +205,7 @@ def create_item(user, title, description, price, categories, date):
         created_at=date
     )
 
-def create_comment(user, item, rating, comment_text, date):
+def create_fake_comment(user, item, rating, comment_text, date):
 
     Comment.objects.create(
         user=user, 
@@ -231,7 +227,7 @@ def create_items_for_user(user):
     categories = ['Electronics', 'Books', 'Clothing', 'Toys', 'Home & Garden']
     for _ in range(randint(1, 3)):
         selected_categories = sample(categories, 2)
-        item = create_item(
+        item = create_fake_item(
             user, 
             "Item " + str(randint(1, 1000)),
             "Description for item",
@@ -246,11 +242,11 @@ def create_excellent_comments(pair):
     user1, user2 = pair
 
     for item in Item.objects.filter(user=user1):
-        create_comment(user2, item, 'excellent', 'Excellent product!', get_random_date(item.created_at, datetime(2023, 5, 8, tzinfo=timezone.utc)))
+        create_fake_comment(user2, item, 'excellent', 'Excellent product!', get_random_date(item.created_at, datetime(2023, 5, 8, tzinfo=timezone.utc)))
         #print(f"Excellent comment from {style.CYAN}{user2.username}{style.RESET} to {style.CYAN}{user1.username}{style.RESET}'s item: {item.title}")
 
     for item in Item.objects.filter(user=user2):
-        create_comment(user1, item, 'excellent', 'Outstanding quality!', get_random_date(item.created_at, datetime(2023, 5, 8, tzinfo=timezone.utc)))
+        create_fake_comment(user1, item, 'excellent', 'Outstanding quality!', get_random_date(item.created_at, datetime(2023, 5, 8, tzinfo=timezone.utc)))
         #print(f"Excellent comment from {style.CYAN}{user1.username}{style.RESET} to {style.CYAN}{user2.username}{style.RESET}'s item: {item.title}")
 
 def create_item_and_comments(user, users_list):
@@ -261,7 +257,7 @@ def create_item_and_comments(user, users_list):
     if user_items.exists():
         item = user_items.first()
     else:
-        item = create_item(
+        item = create_fake_item(
             user, 
             "Item " + str(randint(1, 1000)),
             "Description for item",
@@ -274,7 +270,7 @@ def create_item_and_comments(user, users_list):
     # Add comments to the item
     for _ in range(5):
         commenting_user = choice(users_list)
-        create_comment(
+        create_fake_comment(
             commenting_user, 
             item, 
             'excellent', 
@@ -291,7 +287,7 @@ def delete_and_add_poor_comments(user):
     # Add three 'poor' comments to random items
     for _ in range(3):
         random_item = choice(Item.objects.all())
-        create_comment(
+        create_fake_comment(
             user, 
             random_item, 
             'poor', 

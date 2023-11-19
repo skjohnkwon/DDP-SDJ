@@ -346,18 +346,7 @@ def q5(request):
         # For each user in mutual_favorite_usernames, print all of their favorites
         for username in mutual_favorite_usernames:
             
-            cursor.execute("""
-                SELECT fav_user.username
-                FROM phase_three_favorite
-                INNER JOIN userauth_user fav_user ON phase_three_favorite.fav_user_id = fav_user.id
-                WHERE phase_three_favorite.user_id = (
-                    SELECT id FROM userauth_user WHERE username = %s
-                )
-            """, [username])
-            favorites = [fav_row[0] for fav_row in cursor.fetchall()]
-
             print(f"{style.BRIGHT_CYAN}User: {username}{style.RESET}")
-            print(f"  {style.YELLOW}Favorite: {favorites}{style.RESET}")
 
     return Response({"answer": mutual_favorite_usernames}, status=status.HTTP_200_OK)
 

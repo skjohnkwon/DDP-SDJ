@@ -6,8 +6,8 @@ table {
 }
 
 thead {
-    background-color: #84d8ff;
-    position: relative; /* Added this to position thead */
+    background-color: var(--border-color);
+    position: relative; 
 }
 
 th {
@@ -16,12 +16,11 @@ th {
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: var(--fourth-bg-color); /* Specified a background color */
-    padding: 5px 10px;  /* Adjust as needed */
+    background-color: var(--fourth-bg-color); 
+    padding: 5px 10px; 
     height: 40px;
     overflow: hidden;
 }
-
 
 tbody {
     height: 100%;    
@@ -45,7 +44,7 @@ tr {
 td {
     border: 1px solid var(--fourth-bg-color);
     vertical-align: top;   
-    padding: 5px 10px;  /* Adjust as needed */
+    padding: 5px 10px;
     height: 80px;
     overflow: hidden;
 }

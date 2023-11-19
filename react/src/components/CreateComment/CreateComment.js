@@ -12,7 +12,9 @@ const CreateComment = ({ username, item, item_id }) => {
   }, [rating]);
 
   const create_comment = async () => {
+    
     const token = localStorage.getItem('access_token');
+    console.log('token:', token);
 
     const userdata = JSON.parse(localStorage.getItem('user_data'));
 

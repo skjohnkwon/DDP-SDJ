@@ -8,14 +8,12 @@
 
 .comment_div textarea {
     resize: vertical;
-
     background-color: var(--secondary-bg-color);
     color: var(--text-color);  
     border: none;
     border-bottom: 1px solid white;  
     outline: none;  
     margin: 10px;
-
     height: 400px;
 }
 
@@ -30,9 +28,9 @@
     width: 100px;
     padding: 10px;
     font-size: 13px;
-    appearance: none; /* Removes the default styling for some browsers */
-    -webkit-appearance: none; /* Removes the default styling for Webkit browsers */
-    -moz-appearance: none; /* Removes the default styling for Firefox */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background-color: var(--secondary-bg-color);
     color: var(--text-color);
     cursor: pointer;
@@ -41,7 +39,6 @@
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
     border: none;
-  
 }
 
 .rating_list option {

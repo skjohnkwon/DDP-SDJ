@@ -15,12 +15,16 @@ import re
 @api_view(['POST'])
 def register(request):
 
+    print(request.data)
+
     if request.method == 'POST':
 
         serializer = UserSerializer(data=request.data)
 
         # Validate the data
         if serializer.is_valid():
+
+            print(serializer.validated_data)
 
             username = serializer.validated_data.get('username')
             email = serializer.validated_data.get('email')
@@ -125,8 +129,7 @@ def login(request):
 @permission_classes([IsAuthenticated])
 def check_auth(request):
 
-    if request.user.is_authenticated:
-        
+    if request.user.is_authenticated:  
         return Response({"message": "You are authenticated!", 
                          "username": request.user.username, 
                          "email":request.user.email,
