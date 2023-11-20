@@ -41,10 +41,10 @@ const CreateComment = ({ username, item, item_id }) => {
       }
     } catch (error) {
       console.log('Error during comment creation!', error);
-        if(error.status == 406) {
+        if(error.status === 406) {
           console.log("You cannot comment on your own item!");
           setMessage('You cannot comment on your own item!');
-        } else if(error.status == 409) {
+        } else if(error.status === 409) {
           console.log("you can only comment three times a day!");
           setMessage("you can only comment three times a day!")
         }
@@ -53,6 +53,7 @@ const CreateComment = ({ username, item, item_id }) => {
 
   return (
     <div className='comment_div'>
+      {message && <div>message</div>}
       {username && item && (
         <h2>{username}'s {item}</h2>
       )}

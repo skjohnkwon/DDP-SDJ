@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import '../styles/PartThree.css';
-import Q1 from './PartThreeComponents/Q1'
-import Q2 from './PartThreeComponents/Q2'
-import Q3 from './PartThreeComponents/Q3'
-import Q4 from './PartThreeComponents/Q4'
-import Q5 from './PartThreeComponents/Q5'
-import Q6 from './PartThreeComponents/Q6'
-import Q7 from './PartThreeComponents/Q7'
-import Q8 from './PartThreeComponents/Q8'
-import Q9 from './PartThreeComponents/Q9'
-import Q10 from './PartThreeComponents/Q10'
+import Q1 from '../components/PartThreeComponents/Q1'
+import Q2 from '../components/PartThreeComponents/Q2'
+import Q3 from '../components/PartThreeComponents/Q3'
+import Q4 from '../components/PartThreeComponents/Q4'
+import Q5 from '../components/PartThreeComponents/Q5'
+import Q6 from '../components/PartThreeComponents/Q6'
+import Q7 from '../components/PartThreeComponents/Q7'
+import Q8 from '../components/PartThreeComponents/Q8'
+import Q9 from '../components/PartThreeComponents/Q9'
+import Q10 from '../components/PartThreeComponents/Q10'
 import axios from 'axios';
 
 const PartThree = () => {

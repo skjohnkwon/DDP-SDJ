@@ -7,24 +7,6 @@ const AddFavorite = () => {
     const [userList, setUserList] = useState([]);
     const [fav_user, setFavUser] = useState('');
 
-    const init_db = async () => {
-
-        console.log('Initializing database...');
-        try {
-            const response = await axios.post('http://127.0.0.1:8000/init-db/');
-
-            if (response.status === 201) {
-                
-                console.log(response.data);
-                
-            }
-
-        } catch (error) {
-            
-            console.log('Error during database initialization!', error);
-        }
-    }
-
     const get_user_list = async () => {
 
       const token = localStorage.getItem('access_token');

@@ -11,8 +11,6 @@ const Q3 = () => {
   const [userList, setUserList] = useState([]);
 
   const get_user_list = async () => {
-
-    const token = localStorage.getItem('access_token');
     
       const response = await axios.get('http://localhost:8000/part3/send-list-of-users-excluding-admin-and-current-user/');
   
