@@ -1,9 +1,12 @@
 from pathlib import Path
 from django_config.env import config
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config("SECRET_KEY", default=None)
+SECRET_KEY = os.getenv("SECRET_KEY", default=None)
 
 DEBUG = True
 
@@ -68,13 +71,16 @@ WSGI_APPLICATION = 'django_config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config("DB_ENGINE", default=None),
-        'NAME': config("DB_NAME", default=None),
-        'USER': config("DB_USER", default=None),
-        'PASSWORD': config("DB_PASSWORD", default=None),
-        'HOST': config("DB_HOST", default=None),
-        'PORT': config("DB_PORT", default=None),
-        'OPTIONS': {'sslmode': 'require'},
+        'ENGINE': os.getenv("DB_ENGINE", default=None),
+        'NAME': os.getenv("DB_NAME", default=None),
+        'USER': os.getenv("DB_USER", default=None),
+        'PASSWORD': os.getenv("DB_PASSWORD", default=None),
+        'HOST': os.getenv("DB_HOST", default=None),
+        'PORT': os.getenv("DB_PORT", default=None),
+        'OPTIONS': {
+            'sslmode': 'require',
+            'options': 'endpoint=ep-bitter-tooth-17735894'
+        },
     }
 }
 
@@ -104,10 +110,3 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-EMAIL_BACKEND = config("EMAIL_BACKEND", default=None)
-EMAIL_HOST = config("EMAIL_HOST", default=None)
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default=None)
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default=None)
