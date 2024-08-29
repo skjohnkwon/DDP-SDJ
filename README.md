@@ -1,8 +1,5 @@
 # DatabaseProject_440
 
-- part1 = https://youtu.be/rTg8Voca25g
-- part2 = https://youtu.be/Z2TcOoRgZ08
-
 run backend
 - cd into backend "cd backend"
 - create venv with "python -m venv venv"
